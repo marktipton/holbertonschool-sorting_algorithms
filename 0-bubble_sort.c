@@ -1,4 +1,18 @@
 #include "sort.h"
+
+/**
+ * swap - swaps elements of list
+ *
+ * @el_1: pointer to one element
+ * @el_2: pointer to another element
+ */
+void swap(int* el_1, int* el_2)
+{
+    int temp = *el_1;
+    *el_1 = *el_2;
+    *el_2 = temp;
+}
+
 /**
  * bubble_sort - sorts an array of intergers in ascending order
  *
@@ -7,5 +21,22 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-
+	size_t i, j;
+	bool swapped;
+	
+	for (i = 0; i < size - 1; i++) 
+	{
+		swapped = false;
+		for (j = 0; j < size - i - 1; j++) 
+		{
+			if (array[j] > array[j + 1]) 
+			{
+				swap(&array[j], &array[j + 1]);
+				swapped = true;
+			}
+		}
+		
+		if (swapped == false)
+			break;
+	}
 }
