@@ -6,11 +6,11 @@
  * @el_1: pointer to one element
  * @el_2: pointer to another element
  */
-void swap(int* el_1, int* el_2)
+void swap(int *el_1, int *ell_2)
 {
-    int temp = *el_1;
-    *el_1 = *el_2;
-    *el_2 = temp;
+	int temp = *el_1;
+	*el_1 = *el_2;
+	*el_2 = temp;
 }
 
 /**
@@ -23,19 +23,21 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
 	bool swapped;
-	
-	for (i = 0; i < size - 1; i++) 
+
+	if (array == NULL)
+		return;
+	for (i = 0; i < size - 1; i++)
 	{
 		swapped = false;
-		for (j = 0; j < size - i - 1; j++) 
+		for (j = 0; j < size - i - 1; j++)
 		{
-			if (array[j] > array[j + 1]) 
+			if (array[j] > array[j + 1])
 			{
 				swap(&array[j], &array[j + 1]);
 				swapped = true;
 			}
 		}
-		
+
 		if (swapped == false)
 			break;
 	}
