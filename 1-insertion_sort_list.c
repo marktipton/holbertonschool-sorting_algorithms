@@ -1,39 +1,44 @@
 #include "sort.h"
+#include "swap.c"
+void swap_list(listint_t *a, listint_t *b);
+
 /**
  * insertion_sort_list - sorts a doubly linked list in ascending order
  *
  * @list: doubly linked list of integers
  *
  */
-void insertion_sort_list(listint_t **list)
+void insertion_sort_list(listint_t **list) 
 {
 	listint_t *current = *list;
-	listint_t *temp;
-	listint_t *sort_node = NULL;
-
-	while (current != NULL)
+	bool swapped = true;
+	
+	while (swapped) 
 	{
-		temp = current->next;
-
-		while (sort_node != NULL && sort_node->n > current->n)
+		swapped = 0;
+		current = *list;
+		while (current->next != NULL)
 		{
-			sort_node->prev->next = current;
-			current->next = sort_node;
-			sort_node = current;
-			current = temp;
-			print_list(*list);
+			if (current->n > current->next->n)
+			{
+				swap_list(current, current->next);
+				swapped = 1;
+			}
+			current = current->next;
 		}
-		if (sort_node == NULL)
-			sort_node = current;
-		else
-		{
-			current->prev->next = temp;
-			temp->prev = current->prev;
-			current->prev = sort_node;
-			sort_node->next = current;
-		}
-
-		current = temp;
 	}
-	*list = sort_node;
+}
+
+void swap_list(listint_t *a, listint_t *b) 
+{
+	listint_t *temp_prev;
+	listint_t *temp_next;
+	
+	temp_prev = a->prev;
+	a->prev = b->prev;
+	b->prev = temp_prev;
+
+	temp_next = a->next;
+	a->next = b->next;
+	b->next = temp_next;
 }
