@@ -2,8 +2,7 @@
 /**
  * insertion_sort - sorts a doubly linked list in ascending order
  *
- * @array: array of integers
- * @size: size of array
+ * @list: doubly linked list of integers
  *
  */
 void insertion_sort_list(listint_t **list)
@@ -22,6 +21,7 @@ void insertion_sort_list(listint_t **list)
 			current->next = sort_node;
 			sort_node = current;
 			current = temp;
+			print_list(*list);
 		}
 		if (sort_node == NULL)
 			sort_node = current;
@@ -32,7 +32,6 @@ void insertion_sort_list(listint_t **list)
 			current->prev = sort_node;
 			sort_node->next = current;
 		}
-		print_list(*list);
 
 		current = temp;
 	}
