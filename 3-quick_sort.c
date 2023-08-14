@@ -15,8 +15,8 @@ void quick_sort(int *array, size_t size)
 
 	if (array == NULL || size <= 1)
 		return;
-	pivot = array[size - 1];
-	for (j = 0; j < size - 1; j++)
+	pivot = array[size];
+	for (j = 0; j < size; j++)
 	{
 		if (array[j] <= pivot)
 		{
@@ -25,7 +25,7 @@ void quick_sort(int *array, size_t size)
 			i++;
 		}
 	}
-	swap(&array[i], &array[size - 1]);
+	swap(&array[i], &array[size]);
 	quick_sort(array, i);
 	quick_sort(array + i + 1, size - i - 1);
 }
