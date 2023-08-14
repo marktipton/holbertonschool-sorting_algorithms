@@ -25,7 +25,7 @@ void quick_sort(int *array, size_t size)
 			i++;
 		}
 	}
-	swap(&array[i], &array[size - 1]);
+	swap(&array[i + 1], &array[size - 1]);
 	quick_sort(array, i);
 	quick_sort(array + i + 1, size - i - 1);
 }
