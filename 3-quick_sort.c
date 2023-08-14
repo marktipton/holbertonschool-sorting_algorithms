@@ -14,23 +14,30 @@
 int lomuto_partition(int array[], size_t low, size_t high, size_t size)
 {
 	int pivot = array[high];
-	size_t i = (low - 1);
-	size_t j;
-
-	for (j = low; j <= high - 1; j++)
+	size_t i = low;
+	size_t j = low;
+if (low < high)
+{
+	for (; j < high; j++)
 	{
-		if (array[j] <= pivot)
+		if (array[j] < pivot)
 		{
+			if (i < j)
+			{
+				swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
 			i++;
-			swap(&array[i], &array[j]);
-			print_array(array, size);
 		}
 
 	}
-	swap(&array[i + 1], &array[high]);
-	print_array(array, size);
-
-	return (i + 1);
+	if (array[i + 1] > pivot)
+	{
+		swap(&array[i + 1], &array[j]);
+		print_array(array, size);
+	}
+}
+return (i + 1);
 }
 /**
  * quick_sort_help - allows recursive call with three arguments
