@@ -15,17 +15,18 @@ void quick_sort(int *array, size_t size)
 
 	if (array == NULL || size <= 1)
 		return;
+	print_array(array, size);
 	pivot = array[size - 1];
 	for (j = 0; j < size - 1; j++)
 	{
 		if (array[j] < pivot)
 		{
 			swap(&array[i], &array[j]);
-			print_array(array, size);
 			i++;
+			print_array(array, size);
 		}
 	}
-	swap(&array[i + 1], &array[size - 1]);
+	swap(&array[i], &array[size - 1]);
 	quick_sort(array, i);
-	quick_sort(array, size - 1);
+	quick_sort(array + i + 1, size - i - 1);
 }
