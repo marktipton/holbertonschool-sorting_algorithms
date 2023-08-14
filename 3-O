@@ -1,7 +1,3 @@
-Time complexity of quick sort algorithm:
-
-Best case:
-
-Average case:
-
-Worst case:
+O(nlog(n))
+O(nlog(n))
+O(n^2)
