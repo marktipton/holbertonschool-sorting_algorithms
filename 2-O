@@ -1,7 +1,3 @@
-Time complexity of selection sort algorithm
-
-Best case:
-
-Average case:
-
-Worst case:
+O(n^2)
+O(n^2)
+O(n^2)
