@@ -18,7 +18,7 @@ void quick_sort(int *array, size_t size)
 	pivot = array[size - 1];
 	for (j = 0; j < size - 1; j++)
 	{
-		if (array[j] <= pivot)
+		if (array[j] < pivot)
 		{
 			swap(&array[i], &array[j]);
 			print_array(array, size);
