@@ -43,7 +43,7 @@ void insertion_sort_list(listint_t **list)
 		{
 			if (current->prev->n > current->n)
 			{
-				insert_to_sorted(list, current);
+				current = insert_to_sorted(list, current);
 				print_list(*list);
 			}
 			current = current->next;
