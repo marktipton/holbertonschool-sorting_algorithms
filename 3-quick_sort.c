@@ -11,7 +11,7 @@
  * @size: size of array
  * Return: partition index
  */
-int lomuto_partition(int array[], size_t low, int high, int size)
+int lomuto_partition(int array[], int low, int high, size_t size)
 {
 	int pivot = array[high];
 	int i = (low - 1);
