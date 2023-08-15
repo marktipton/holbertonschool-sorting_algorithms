@@ -3,7 +3,7 @@
 #include "sort.h"
 #include "swap.c"
 /**
- * swap_array: swaps array of int
+ * swap_array - swaps array of integers hmmm
  * @array: array
  * @a: el 2
  * @b: el 1
