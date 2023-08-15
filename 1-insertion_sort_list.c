@@ -10,21 +10,24 @@
 listint_t *insert_to_sorted(listint_t **head, listint_t *ins_node)
 {
 	listint_t *current = ins_node;
-	listint_t *prev_n = ins_node->prev;
+	listint_t *prev_n = current->prev;
 
-	prev_n->next = current->next;
-	if (current->next != NULL)
-		current->next->prev = prev_n;
+	if (prev_n != NULL)
+	{
+		prev_n->next = current->next;
+		if (current->next != NULL)
+			current->next->prev = prev_n;
 
-	current->next = prev_n;
-	current->prev = prev_n->prev;
-	prev_n->prev = current;
+		current->next = prev_n;
+		current->prev = prev_n->prev;
+		prev_n->prev = current;
 
-	if (current->prev)
-		current->prev->next = current;
-	else
-		*head = current;
-	return (current);
+		if (current->prev != NULL)
+			current->prev->next = current;
+		else
+			*head = current;
+	}
+		return (current);
 }
 
 /**
@@ -36,15 +39,17 @@ listint_t *insert_to_sorted(listint_t **head, listint_t *ins_node)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current;
+	listint_t *temp;
 
-	if (*list == NULL || (*list)->next == NULL || list == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 	current = (*list)->next;
 	while (current != NULL)
 	{
-		while (current->prev->n > current->n && (current->prev))
+		temp = current;
+		while (temp->prev && temp->prev->n > temp->n)
 		{
-			current = insert_to_sorted(list, current);
+			temp = insert_to_sorted(list, current);
 			print_list(*list);
 		}
 		current = current->next;
