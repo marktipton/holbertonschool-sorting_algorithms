@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include "sort.h"
 #include "swap.c"
+
+void swap_array(int *array, ssize_t a, ssize_t b)
+{
+	int temp;
+
+	temp = array[a];
+	array[a] = array[b];
+	array[b] = temp;
+}
 /**
  * lomuto_partition - makes last element the pivot element
  *
@@ -20,11 +29,11 @@ int lomuto_partition(int array[], int low, int high, size_t size)
 
 	for (j = low; j <= high - 1; j++)
 	{
-		if (array[j] <= pivot)
+		if (array[j] < pivot)
 		{
-			i++;
-			swap(&array[j], &array[i]);
+			swap_array(array, low, high);
 			print_array(array, size);
+			i++;
 		}
 	}
 	temp = array[i + 1];
