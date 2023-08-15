@@ -4,12 +4,12 @@
  * insert_to_sorted - inserts a node in ascending order
  *
  * @head: first node in sorted list
- * @new_node: node to be inserted in list
+ * @ins_node: node to be inserted in list
  * Return: pointer to newly inserted node
  */
 listint_t *insert_to_sorted(listint_t **head, listint_t *ins_node)
 {
-        listint_t *current = ins_node;
+	listint_t *current = ins_node;
 	listint_t *back = current->prev;
 
 	back->next = current->next;
