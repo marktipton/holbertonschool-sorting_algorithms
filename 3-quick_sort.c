@@ -43,7 +43,7 @@ void quick_sort_help(int array[], int low, int high, size_t size)
 {
 	int pi; /*partition index*/
 	int sorted, i;
-	
+
 	for (i = low; i < high; i++)
 	{
 		if (array[i] > array[i + 1])
