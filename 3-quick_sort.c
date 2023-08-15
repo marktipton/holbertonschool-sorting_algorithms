@@ -11,26 +11,25 @@
  * @size: size of array
  * Return: partition index
  */
-int lomuto_partition(int array[], size_t low, size_t high, size_t size)
+int lomuto_partition(int array[], size_t low, int high, int size)
 {
 	int pivot = array[high];
-	size_t i = low;
-	size_t j = low;
+	int i = (low - 1);
+	int j;
+	int temp;
 
-	for (; j < high; ++j)
+	for (j = low; j <= high - 1; j++)
 	{
-		if (array[j] < pivot)
+		if (array[j] <= pivot)
 		{
-			swap(&array[i], &array[j]);
+			i++;
+			swap(&array[j], &array[i]);
 			print_array(array, size);
-			++i;
 		}
-
 	}
-
-	swap(&array[i], &array[high]);
-	print_array(array, size);
-	return (i);
+	temp = array[i + 1];
+	array[high] = temp;
+	return (i + 1);
 }
 /**
  * quick_sort_help - allows recursive call with three arguments
@@ -40,16 +39,16 @@ int lomuto_partition(int array[], size_t low, size_t high, size_t size)
  * @high: larger element
  * @size: size of array
  */
-void quick_sort_help(int array[], size_t low, size_t high, size_t size)
+void quick_sort_help(int array[], int low, int high, size_t size)
 {
-	int pi; /*partition index*/
+        int pi; /*partition index*/
 
-	if (low < high)
-	{
-		pi = lomuto_partition(array, low, high, size);
-		quick_sort_help(array, low, pi - 1, size);
-		quick_sort_help(array, pi + 1, high, size);
-	}
+        if (low < high)
+        {
+                pi = lomuto_partition(array, low, high, size);
+                quick_sort_help(array, low, pi - 1, size);
+                quick_sort_help(array, pi + 1, high, size);
+        }
 }
 /**
  * quick_sort - sorts array of integers into ascending order
