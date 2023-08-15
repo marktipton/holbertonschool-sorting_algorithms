@@ -10,7 +10,7 @@
 listint_t *insert_to_sorted(listint_t **head, listint_t *ins_node)
 {
 	listint_t *current = ins_node;
-	listint_t *prev_n = current->prev;
+	listint_t *prev_n = ins_node->prev;
 
 	prev_n->next = current->next;
 	if (current->next != NULL)
