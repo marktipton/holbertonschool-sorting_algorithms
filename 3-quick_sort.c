@@ -2,7 +2,12 @@
 #include <stdlib.h>
 #include "sort.h"
 #include "swap.c"
-
+/**
+ * swap_array: swaps array of int
+ * @array: array
+ * @a: el 2
+ * @b: el 1
+ */
 void swap_array(int *array, ssize_t a, ssize_t b)
 {
 	int temp;
