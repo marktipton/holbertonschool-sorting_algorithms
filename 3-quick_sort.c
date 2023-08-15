@@ -41,14 +41,25 @@ int lomuto_partition(int array[], size_t low, int high, int size)
  */
 void quick_sort_help(int array[], int low, int high, size_t size)
 {
-        int pi; /*partition index*/
-
-        if (low < high)
-        {
-                pi = lomuto_partition(array, low, high, size);
-                quick_sort_help(array, low, pi - 1, size);
-                quick_sort_help(array, pi + 1, high, size);
-        }
+	int pi; /*partition index*/
+	int sorted, i;
+	
+	for (i = low; i < high; i++)
+	{
+		if (array[i] > array[i + 1])
+		{
+			sorted = 0;
+			break;
+		}
+	}
+	if (sorted)
+		return;
+	if (low < high)
+	{
+		pi = lomuto_partition(array, low, high, size);
+		quick_sort_help(array, low, pi - 1, size);
+		quick_sort_help(array, pi + 1, high, size);
+	}
 }
 /**
  * quick_sort - sorts array of integers into ascending order
