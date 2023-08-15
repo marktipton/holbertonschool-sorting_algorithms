@@ -35,7 +35,10 @@ listint_t *insert_to_sorted(listint_t **head, listint_t *ins_node)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current;
+	listint_t *current = (*list)->next;
+
+	if (*list == NULL || current == NULL)
+		return;
 
 	while (current != NULL)
 	{
