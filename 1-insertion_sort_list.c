@@ -37,15 +37,15 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *current;
 
-	if (*list == NULL || (*list)->next == NULL)
+	if (*list == NULL || (*list)->next == NULL || list == NULL)
 		return;
 	current = (*list)->next;
 	while (current != NULL)
 	{
 		while (current->prev->n > current->n && (current->prev))
 		{
-				current = insert_to_sorted(list, current);
-				print_list(*list);
+			current = insert_to_sorted(list, current);
+			print_list(*list);
 		}
 		current = current->next;
 	}
